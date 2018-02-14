@@ -1,1 +1,46 @@
-<h3>Add a Product   </h3>
+<h2>Add Product</h2>
+
+<form name="addProductForm" ng-submit="$ctrl.onFormSubmit($event, addProductForm)"novalidate>
+        <div>
+            <label for="title">Title</label>
+            <input 
+            ng-model="$ctrl.newProduct.title" 
+            required
+            minlength="3"
+            type="text" 
+            name="title">
+        </div>
+        <span ng-if="addProductForm.title.$error.required">
+            This field is required.
+        </span>
+        <span ng-if="addProductForm.title.$error.minlength">
+                This fiels requires minimum of 3 characters.
+        </span>
+
+        <div>
+                <label for="company">Company</label>
+                <input type="text" ng-model="$ctrl.newProduct.company" name="company">
+        </div>
+    
+        <div>
+                <label for="price">Price</label>
+                <input 
+                type="number"
+                required                
+                ng-model="$ctrl.newProduct.price" 
+                name="price">
+        </div>
+        <span ng-if="addProductForm.price.$error.required">
+                This field is required.
+            </span>
+        <div>
+                <label for="imgUrl">Image url</label>
+                <input type="text" ng-model="$ctrl.newProduct.imgUrl" name="imgUrl">
+        </div>
+        {{$ctrl.newProduct}}
+        <div>
+            <input type="submit" value="Add Product">
+            <input type="reset" value="Reset">
+        </div>
+    
+    </form>
