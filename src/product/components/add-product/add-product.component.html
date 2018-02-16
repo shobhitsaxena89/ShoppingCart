@@ -6,10 +6,18 @@
             <input 
             ng-model="$ctrl.newProduct.title" 
             required
+            prod-title
             minlength="3"
             type="text" 
+            ng-model-options="{updateOn: 'default blur', debounce: {default: 500, blur: 0}}"
             name="title">
         </div>
+        <span ng-if="addProductForm.title.$error.prodTitle">
+            should not start with galaxy.
+        </span>
+        <span ng-if="addProductForm.title.$error.prodAvailability">
+            Product is already available.
+        </span>
         <span ng-if="addProductForm.title.$error.required">
             This field is required.
         </span>
